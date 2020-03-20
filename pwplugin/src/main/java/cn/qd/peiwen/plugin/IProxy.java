@@ -10,5 +10,4 @@ public interface IProxy {
     void onComponentPrepareing();
 
     void onComponentResourceWaiting();
-
 }
