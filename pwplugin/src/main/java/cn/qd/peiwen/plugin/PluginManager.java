@@ -32,14 +32,6 @@ public class PluginManager {
         this.proxy = new WeakReference<>(proxy);
     }
 
-    public WeakReference<IProxy> getProxy() {
-        return proxy;
-    }
-
-    public void setProxy(IProxy proxy) {
-        this.proxy = new WeakReference<>(proxy);
-    }
-
     public void insertPlugin(String name, Class<? extends IPlugin> pluginType) {
         this.insertPlugin(name, pluginType, null);
     }

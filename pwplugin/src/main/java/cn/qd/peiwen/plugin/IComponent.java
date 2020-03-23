@@ -12,5 +12,5 @@ public interface IComponent {
 
     void onProcessEvent(IEventEntity event);
 
-    void onInitialRequest(IProxy proxy, IParamEntity params);
+    void onInitialRequest(IParamEntity params);
 }
