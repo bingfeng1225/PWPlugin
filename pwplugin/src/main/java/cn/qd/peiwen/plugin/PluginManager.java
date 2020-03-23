@@ -5,6 +5,7 @@ import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.Map;
 
+import cn.qd.peiwen.plugin.event.IEventEntity;
 import cn.qd.peiwen.plugin.param.IParamEntity;
 import cn.qd.peiwen.pwtools.EmptyUtils;
 
@@ -63,5 +64,38 @@ public class PluginManager {
             return null;
         }
         return this.pluginsType.get(name);
+    }
+
+
+    public boolean isResumed(){
+        boolean result = false;
+        if(EmptyUtils.isNotEmpty(this.proxy)){
+            result = this.proxy.get().isResumed();
+        }
+        return result;
+    }
+
+    public void postComponentPrepareing(){
+        if(EmptyUtils.isNotEmpty(this.proxy)){
+            this.proxy.get().onComponentPrepareing();
+        }
+    }
+
+    public void postComponentPrepareFailured(){
+        if(EmptyUtils.isNotEmpty(this.proxy)){
+            this.proxy.get().onComponentPrepareFailured();
+        }
+    }
+
+    public void postComponentPrepareSuccessed(){
+        if(EmptyUtils.isNotEmpty(this.proxy)){
+            this.proxy.get().onComponentPrepareSuccessed();
+        }
+    }
+
+    public void postPluginEvent(String plugin, IEventEntity event){
+        if(EmptyUtils.isNotEmpty(this.proxy)){
+            this.proxy.get().onProcessEvent(plugin,event);
+        }
     }
 }
