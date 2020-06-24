@@ -1,13 +1,15 @@
 package cn.qd.peiwen.plugin;
 
 
+import android.text.TextUtils;
+import android.widget.TextView;
+
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.Map;
 
 import cn.qd.peiwen.plugin.event.IEventEntity;
 import cn.qd.peiwen.plugin.param.IParamEntity;
-import cn.qd.peiwen.pwtools.EmptyUtils;
 
 public class PluginManager {
     private WeakReference<IProxy> proxy;
@@ -38,29 +40,28 @@ public class PluginManager {
     }
 
     public void insertPlugin(String name, Class<? extends IPlugin> pluginType, Class<? extends IParamEntity> paramsType) {
-        if (EmptyUtils.isEmpty(name)) {
+        if (TextUtils.isEmpty(name)) {
             return;
         }
-
-        if (EmptyUtils.isEmpty(pluginType)) {
+        if (pluginType == null) {
             return;
         }
         this.pluginsType.put(name, pluginType);
-        if (EmptyUtils.isEmpty(paramsType)) {
+        if (paramsType == null) {
             return;
         }
         this.paramsType.put(name, paramsType);
     }
 
     public Class<?> findParamType(String name) {
-        if (EmptyUtils.isEmpty(name)) {
+        if (TextUtils.isEmpty(name)) {
             return null;
         }
         return this.paramsType.get(name);
     }
 
     public Class<?> findPluginType(String name) {
-        if (EmptyUtils.isEmpty(name)) {
+        if (TextUtils.isEmpty(name)) {
             return null;
         }
         return this.pluginsType.get(name);
@@ -69,32 +70,32 @@ public class PluginManager {
 
     public boolean isResumed(){
         boolean result = false;
-        if(EmptyUtils.isNotEmpty(this.proxy)){
+        if(null != this.proxy && null != this.proxy.get()){
             result = this.proxy.get().isResumed();
         }
         return result;
     }
 
     public void postComponentPrepareing(){
-        if(EmptyUtils.isNotEmpty(this.proxy)){
+        if(null != this.proxy && null != this.proxy.get()){
             this.proxy.get().onComponentPrepareing();
         }
     }
 
     public void postComponentPrepareFailured(){
-        if(EmptyUtils.isNotEmpty(this.proxy)){
+        if(null != this.proxy && null != this.proxy.get()){
             this.proxy.get().onComponentPrepareFailured();
         }
     }
 
     public void postComponentPrepareSuccessed(){
-        if(EmptyUtils.isNotEmpty(this.proxy)){
+        if(null != this.proxy && null != this.proxy.get()){
             this.proxy.get().onComponentPrepareSuccessed();
         }
     }
 
     public void postPluginEvent(String plugin, IEventEntity event){
-        if(EmptyUtils.isNotEmpty(this.proxy)){
+        if(null != this.proxy && null != this.proxy.get()){
             this.proxy.get().onProcessEvent(plugin,event);
         }
     }
