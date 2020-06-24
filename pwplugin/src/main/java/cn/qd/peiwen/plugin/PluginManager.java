@@ -2,7 +2,6 @@ package cn.qd.peiwen.plugin;
 
 
 import android.text.TextUtils;
-import android.widget.TextView;
 
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
