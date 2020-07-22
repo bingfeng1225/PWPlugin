@@ -10,7 +10,7 @@ public interface IComponent {
 
     void onRelease();
 
-    void onProcessEvent(IEventEntity event);
-
     void onInitialRequest(IParamEntity params);
+
+    void onComponentProcessEvent(IEventEntity event);
 }

@@ -1,7 +1,6 @@
 package cn.qd.peiwen.plugin;
 
-
-        import cn.qd.peiwen.plugin.event.IEventEntity;
+import cn.qd.peiwen.plugin.event.IEventEntity;
 
 public interface IProxy {
     boolean isResumed();
@@ -12,5 +11,5 @@ public interface IProxy {
 
     void onComponentPrepareSuccessed();
 
-    void onProcessEvent(String plugin, IEventEntity event);
+    void onProxyProcessEvent(String plugin, IEventEntity event);
 }

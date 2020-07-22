@@ -15,7 +15,7 @@ public interface IPlugin {
 
     void onRelease();
 
-    void onProcessEvent(IEventEntity event);
+    void onPluginProcessEvent(IEventEntity event);
 
     IComponent onCreateComponent(Context context);
 }
