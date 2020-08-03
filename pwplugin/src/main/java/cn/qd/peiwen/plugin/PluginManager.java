@@ -93,6 +93,10 @@ public class PluginManager {
         }
     }
 
+    public void postPluginEvent(IEventEntity event){
+        this.postPluginEvent(null,event);
+    }
+
     public void postPluginEvent(String plugin, IEventEntity event){
         if(null != this.proxy && null != this.proxy.get()){
             this.proxy.get().onProxyProcessEvent(plugin,event);
